@@ -115,31 +115,24 @@
           </div>
           <div class="card-body">
             <div class="row align-items-start">
-              <!-- Colonne de gauche : Infos du profil -->
               <div class="col-md-6 border-end border-light text-start">
                 <h4><i class="bi bi-person-circle"></i> Profile Information</h4>
-                <p><i class="bi bi-person"></i>
-                  <strong>Name:</strong>
+                <p><i class="bi bi-person"></i><strong>Name:</strong>
                   {{this.userName}}</p>
-                <p><i class="bi bi-person"></i>
-                  <strong>Surname:</strong>
+                <p><i class="bi bi-person"></i><strong>Surname:</strong>
                   {{this.userSurname}}</p>
-                <p><i class="bi bi-geo-alt"></i>
-                  <strong>Address:</strong>
+                <p><i class="bi bi-geo-alt"></i><strong>Address:</strong>
                   {{this.userAddress}}</p>
-                <p><i class="bi bi-heart"></i>
-                  <strong>Marital Status:</strong>
+                <p><i class="bi bi-heart"></i><strong>Marital Status:</strong>
                   {{this.userSituation}}</p>
-                <p><i class="bi bi-file-earmark-text"></i>
-                  <strong>VAT Number:</strong>
+                <p><i class="bi bi-file-earmark-text"></i><strong>VAT Number:</strong>
                   {{this.userTva}}</p>
               </div>
 
-              <!-- Colonne de droite : Offre sélectionnée -->
               <div class="col-md-6 ps-3 text-start">
                 <h4><i class="bi bi-tag"></i> Selected Offer</h4>
-                <p><i class="bi bi-box"></i>
-                  <strong>{{this.selectedOffer.name}}</strong></p>
+                <p><i class="bi bi-box"></i><strong
+                  >{{this.selectedOffer.name}}</strong></p>
                 <p><i class="bi bi-currency-euro"></i>
                   Price: €{{this.selectedOffer.price}}/month</p>
                 <h5><i class="bi bi-gear"></i> Services:</h5>
@@ -154,6 +147,26 @@
         </div>
       </div>
     {{/if}}
+
+    <div class="form-check mt-4">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="confirmChoice"
+        {{on "change" this.toggleValidation}}
+      />
+      <label class="form-check-label" for="confirmChoice">
+        I agree with the selected offer.
+      </label>
+    </div>
+
+    <button
+      class="btn btn-primary mt-3"
+      {{on "click" this.validateAndRedirect}}
+      disabled={{this.isDisabled}}
+    >
+      Validate and Go to Profile
+    </button>
 
   {{else}}
     <p>Please log in to view the sponsorship options.</p>

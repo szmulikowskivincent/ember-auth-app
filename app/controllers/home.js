@@ -66,4 +66,15 @@ export default class HomeController extends Controller {
     const offerKey = event.target.value;
     this.set('selectedOffer', this.offerDetails[offerKey]);
   }
+
+  @action
+  toggleValidation(event) {
+    this.isDisabled = !event.target.checked;
+  }
+
+  @action
+  validateAndRedirect() {
+    alert('Redirecting to profile...');
+    this.router.transitionTo('/my-profile');
+  }
 }
