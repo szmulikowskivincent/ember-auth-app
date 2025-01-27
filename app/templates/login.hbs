@@ -1,0 +1,51 @@
+<h2 class="text-center">
+  <i class="bi bi-lock-fill"></i>
+  Login
+</h2>
+
+{{#if this.isLoggedIn}}
+  <p class="text-success text-center">Login successful! Redirecting...</p>
+  <button
+    type="button"
+    class="btn btn-success w-100"
+    {{on "click" this.goToProfile}}
+  >
+    <i class="bi bi-person-circle"></i>
+    Go to My Profile
+  </button>
+{{else}}
+  <form {{on "submit" this.submitForm}} class="mt-4">
+    <div class="input-group mb-3">
+      <span class="input-group-text">
+        <i class="bi bi-envelope-fill"></i>
+      </span>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        placeholder="Enter your email"
+        {{on "input" this.updateEmail}}
+        required
+      />
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">
+        <i class="bi bi-lock-fill"></i>
+      </span>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        placeholder="Enter your password"
+        {{on "input" this.updatePassword}}
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">
+      <i class="bi bi-lock-fill"></i>
+      Login
+    </button>
+  </form>
+{{/if}}

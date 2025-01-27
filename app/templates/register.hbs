@@ -1,0 +1,63 @@
+<h2 class="text-center">
+  <i class="bi bi-person-plus-fill"></i>
+  Register
+</h2>
+
+{{#if this.isRegistered}}
+  <p class="text-success text-center">
+    User registered successfully! Redirecting to login...
+  </p>
+  <button class="btn btn-secondary w-100 mt-3" {{on "click" this.goToLogin}}>
+    <i class="bi bi-arrow-right-circle"></i>
+    Go to Login
+  </button>
+{{else}}
+  <form {{on "submit" this.submitForm}} class="mt-4">
+    <div class="input-group mb-3">
+      <span class="input-group-text">
+        <i class="bi bi-person-fill"></i>
+      </span>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        placeholder="Enter your name"
+        {{on "input" this.updateName}}
+        required
+      />
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">
+        <i class="bi bi-envelope-fill"></i>
+      </span>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        placeholder="Enter your email"
+        {{on "input" this.updateEmail}}
+        required
+      />
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">
+        <i class="bi bi-lock-fill"></i>
+      </span>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        placeholder="Enter your password"
+        {{on "input" this.updatePassword}}
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">
+      <i class="bi bi-person-plus-fill"></i>
+      Register
+    </button>
+  </form>
+{{/if}}

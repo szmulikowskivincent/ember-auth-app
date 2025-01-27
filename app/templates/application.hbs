@@ -1,7 +1,71 @@
-{{page-title "EmberAuthApp"}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">EmberAuthApp</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <LinkTo @route="home" class="nav-link active">
+            <i class="bi bi-house-door"></i>
+            Home
+          </LinkTo>
+        </li>
 
-{{outlet}}
+        {{#if this.isAuthenticated}}
+          <li class="nav-item">
+            <LinkTo @route="my-profile" class="nav-link">
+              <i class="bi bi-person-circle"></i>
+              My Profile
+            </LinkTo>
+          </li>
+        {{else}}
+          <li class="nav-item">
+            <LinkTo @route="login" class="nav-link">
+              <i class="bi bi-box-arrow-in-right"></i>
+              Login
+            </LinkTo>
+          </li>
+          <li class="nav-item">
+            <LinkTo @route="register" class="nav-link">
+              <i class="bi bi-person-plus-fill"></i>
+              Register
+            </LinkTo>
+          </li>
+        {{/if}}
+      </ul>
 
-{{! The following component displays Ember's default welcome message. }}
-<WelcomePage />
-{{! Feel free to remove this! }}
+      {{#if this.isAuthenticated}}
+        <div class="d-flex ms-auto align-items-center">
+          {{#if this.avatarPreview}}
+            <img
+              src={{this.avatarPreview}}
+              alt="Avatar"
+              class="rounded-circle"
+              width="40"
+              height="40"
+              style="object-fit: cover; margin-right: 10px;"
+            />
+          {{/if}}
+
+          <button class="btn btn-danger" {{on "click" this.logout}}>
+            <i class="bi bi-box-arrow-right"></i>
+            Logout
+          </button>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  {{outlet}}
+</div>
+
+<Footer />
