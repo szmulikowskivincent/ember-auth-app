@@ -1,1 +1,25 @@
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+.card-header h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-body p {
+    font-size: 1rem;
+}
+
+.card {
+    block-size: 100%;
+    margin-block-start: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.fs-4 {
+    font-size: 1.5rem;
+}

@@ -2,16 +2,160 @@
   {{#if this.userName}}
     <h1>
       <i class="bi bi-hand-thumbs-up"></i>
-      Welcome, {{this.userName}} {{this.userSurname}}! <i class="bi bi-emoji-smile"></i>
+      Welcome,
+      {{this.userName}}
+      {{this.userSurname}}!
+      <i class="bi bi-emoji-smile"></i>
     </h1>
+    <p>
+      <i class="bi bi-justify"></i>
+      Choose an option from the navbar to get started.
+    </p>
+
+    <h2>Sponsorship Options</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-3">
+        <div
+          class="card text-dark bg-light border-secondary"
+          style="opacity: 0.9;"
+        >
+          <div class="card-header text-center">
+            <h4 class="fs-4">Basic Sponsorship</h4>
+          </div>
+          <div class="card-body">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="offer"
+              id="offer1"
+              value="offer1"
+              {{on "change" this.selectOffer}}
+            />
+            <p><i class="bi bi-currency-euro"></i> Price: €500/month</p>
+            <div class="list-unstyled">
+              <p><i class="bi bi-house-door"></i> Logo on website</p>
+              <p><i class="bi bi-share"></i> Social media shoutout</p>
+              <p><i class="bi bi-envelope"></i> Newsletter mention</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="card text-dark bg-light border-info" style="opacity: 0.9;">
+          <div class="card-header text-center">
+            <h4 class="fs-4">Premium Sponsorship</h4>
+          </div>
+          <div class="card-body">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="offer"
+              id="offer2"
+              value="offer2"
+              {{on "change" this.selectOffer}}
+            />
+            <p><i class="bi bi-currency-euro"></i> Price: €1000/month</p>
+            <div class="list-unstyled">
+              <p><i class="bi bi-house-door"></i> Logo on website</p>
+              <p><i class="bi bi-share"></i> Social media shoutout</p>
+              <p><i class="bi bi-envelope"></i> Newsletter mention</p>
+              <p><i class="bi bi-calendar-check"></i> Event sponsorship</p>
+              <p><i class="bi bi-phone"></i> Dedicated support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div
+          class="card text-dark bg-light border-success"
+          style="opacity: 0.9;"
+        >
+          <div class="card-header text-center">
+            <h4 class="fs-4">Exclusive Sponsorship</h4>
+          </div>
+          <div class="card-body">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="offer"
+              id="offer3"
+              value="offer3"
+              {{on "change" this.selectOffer}}
+            />
+            <p><i class="bi bi-currency-euro"></i> Price: €2000/month</p>
+            <div class="list-unstyled">
+              <p><i class="bi bi-house-door"></i> Logo on website</p>
+              <p><i class="bi bi-share"></i> Social media shoutout</p>
+              <p><i class="bi bi-envelope"></i> Newsletter mention</p>
+              <p><i class="bi bi-calendar-check"></i> Event sponsorship</p>
+              <p><i class="bi bi-pen"></i> Dedicated blog post</p>
+              <p><i class="bi bi-person-bounding-box"></i>
+                VIP access to events</p>
+              <p><i class="bi bi-stars"></i>
+                Premium placement in all communications</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br /><br />
+
+    {{#if this.selectedOffer}}
+      <div class="mt-4">
+        <div
+          class="card text-white"
+          style="background-color: rgba(0, 0, 0, 0.7);"
+        >
+          <div class="card-header text-center">
+            <h3 class="fs-4"><i class="bi bi-check-circle"></i>
+              Profile & Selected Offer</h3>
+          </div>
+          <div class="card-body">
+            <div class="row align-items-start">
+              <!-- Colonne de gauche : Infos du profil -->
+              <div class="col-md-6 border-end border-light text-start">
+                <h4><i class="bi bi-person-circle"></i> Profile Information</h4>
+                <p><i class="bi bi-person"></i>
+                  <strong>Name:</strong>
+                  {{this.userName}}</p>
+                <p><i class="bi bi-person"></i>
+                  <strong>Surname:</strong>
+                  {{this.userSurname}}</p>
+                <p><i class="bi bi-geo-alt"></i>
+                  <strong>Address:</strong>
+                  {{this.userAddress}}</p>
+                <p><i class="bi bi-heart"></i>
+                  <strong>Marital Status:</strong>
+                  {{this.userSituation}}</p>
+                <p><i class="bi bi-file-earmark-text"></i>
+                  <strong>VAT Number:</strong>
+                  {{this.userTva}}</p>
+              </div>
+
+              <!-- Colonne de droite : Offre sélectionnée -->
+              <div class="col-md-6 ps-3 text-start">
+                <h4><i class="bi bi-tag"></i> Selected Offer</h4>
+                <p><i class="bi bi-box"></i>
+                  <strong>{{this.selectedOffer.name}}</strong></p>
+                <p><i class="bi bi-currency-euro"></i>
+                  Price: €{{this.selectedOffer.price}}/month</p>
+                <h5><i class="bi bi-gear"></i> Services:</h5>
+                <div class="list-unstyled">
+                  {{#each this.selectedOffer.services as |service|}}
+                    <p><i class="bi bi-check-circle"></i> {{service}}</p>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+
   {{else}}
-    <h1>
-      <i class="bi bi-hand-thumbs-up"></i>
-      Welcome to EmberAuthApp
-    </h1>
+    <p>Please log in to view the sponsorship options.</p>
   {{/if}}
-  <p>
-    <i class="bi bi-justify"></i>
-    Choose an option from the navbar to get started.
-  </p>
 </div>

@@ -2,12 +2,46 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
-export default class ApplicationController extends Controller {
+export default class HomeController extends Controller {
   @service router;
   @service auth;
 
   userName = '';
   userSurname = '';
+  selectedOffer = null;
+
+  offerDetails = {
+    offer1: {
+      name: 'Basic Sponsorship',
+      price: 500,
+      services: [
+        'Logo on website',
+        'Social media shoutout',
+        'Newsletter mention',
+      ],
+    },
+    offer2: {
+      name: 'Premium Sponsorship',
+      price: 1000,
+      services: [
+        'Logo on website',
+        'Social media shoutout',
+        'Newsletter mention',
+        'Event sponsorship',
+      ],
+    },
+    offer3: {
+      name: 'Exclusive Sponsorship',
+      price: 2000,
+      services: [
+        'Logo on website',
+        'Social media shoutout',
+        'Newsletter mention',
+        'Event sponsorship',
+        'Dedicated blog post',
+      ],
+    },
+  };
 
   constructor() {
     super(...arguments);
@@ -25,5 +59,11 @@ export default class ApplicationController extends Controller {
     localStorage.removeItem('user');
     this.router.transitionTo('home');
     window.location.reload();
+  }
+
+  @action
+  selectOffer(event) {
+    const offerKey = event.target.value;
+    this.set('selectedOffer', this.offerDetails[offerKey]);
   }
 }

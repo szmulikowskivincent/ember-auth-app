@@ -27,7 +27,7 @@ export default class ApplicationController extends Controller {
     localStorage.removeItem('user');
     localStorage.removeItem('profile');
     this.isAuthenticated = false;
-    this.avatarPreview = ''; // Reset the avatar
+    this.avatarPreview = '';
 
     this.router.transitionTo('home');
   }
