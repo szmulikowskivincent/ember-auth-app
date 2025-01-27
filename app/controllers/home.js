@@ -74,7 +74,7 @@ export default class HomeController extends Controller {
 
   @action
   validateAndRedirect() {
-    alert('Redirecting to profile...');
-    this.router.transitionTo('/my-profile');
+    alert('Redirecting to payment...');
+    this.router.transitionTo('/payment');
   }
 }

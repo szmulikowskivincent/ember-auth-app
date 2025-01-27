@@ -11,4 +11,5 @@ Router.map(function () {
   this.route('register');
   this.route('login');
   this.route('my-profile');
+  this.route('payment');
 });

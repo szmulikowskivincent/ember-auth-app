@@ -1,4 +1,5 @@
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+/*Home.css*/
 .card-header h4 {
     font-size: 1.25rem;
     font-weight: bold;
@@ -22,4 +23,42 @@
 
 .fs-4 {
     font-size: 1.5rem;
+}
+
+/* app/styles/payment.css */
+.payment-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-block-start: 20px;
+}
+
+.payment-card {
+    cursor: pointer;
+    inline-size: 18rem;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.payment-card.selected {
+    transform: scale(1.05);
+    border: 2px solid #007bff;
+}
+
+.payment-card img {
+    inline-size: 100%;
+    block-size: auto;
+}
+
+.payment-card .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.payment-card .card-text {
+    color: #555;
+}
+
+.modal-body {
+    text-align: center;
 }
