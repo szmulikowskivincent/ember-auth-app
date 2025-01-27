@@ -25,7 +25,7 @@
     font-size: 1.5rem;
 }
 
-/* app/styles/payment.css */
+/*payment.css*/
 .payment-options {
     display: flex;
     justify-content: center;
@@ -61,4 +61,34 @@
 
 .modal-body {
     text-align: center;
+}
+
+/*Responsiveness for iPhone XR*/
+.payment-options .card {
+    inline-size: 100%;
+}
+
+.payment-logo {
+    inline-size: 60px;
+    margin: 5px 10px;
+}
+
+@media (min-inline-size: 768px) {
+    .payment-options .card {
+        inline-size: 18rem;
+    }
+
+    .payment-logo {
+        inline-size: 75px;
+    }
+}
+
+@media (max-width: 576px) {
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .payment-logo {
+        inline-size: 50px;
+    }
 }

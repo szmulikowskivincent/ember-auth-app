@@ -1,14 +1,16 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 export default class HomeController extends Controller {
   @service router;
   @service auth;
 
-  userName = '';
-  userSurname = '';
-  selectedOffer = null;
+  @tracked userName = '';
+  @tracked userSurname = '';
+  @tracked selectedOffer = null;
+  @tracked isCheckboxChecked = false;
 
   offerDetails = {
     offer1: {
@@ -53,6 +55,10 @@ export default class HomeController extends Controller {
     }
   }
 
+  get isDisabled() {
+    return !(this.selectedOffer && this.isCheckboxChecked);
+  }
+
   @action
   logout() {
     this.auth.logout();
@@ -64,16 +70,21 @@ export default class HomeController extends Controller {
   @action
   selectOffer(event) {
     const offerKey = event.target.value;
-    this.set('selectedOffer', this.offerDetails[offerKey]);
+    this.selectedOffer = this.offerDetails[offerKey];
   }
 
   @action
   toggleValidation(event) {
-    this.isDisabled = !event.target.checked;
+    this.isCheckboxChecked = event.target.checked;
   }
 
   @action
   validateAndRedirect() {
+    if (!this.selectedOffer || !this.isCheckboxChecked) {
+      alert('Please select an offer and agree to the terms before proceeding.');
+      return;
+    }
+
     alert('Redirecting to payment...');
     this.router.transitionTo('/payment');
   }
